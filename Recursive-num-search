@@ -1,0 +1,67 @@
+/** @author Haley
+*   @file lab2.3.cpp
+*/
+
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+//prototype
+int isMember(const int intArray[], int searchValue, int& nextIndex, const int arrayTotal);
+
+
+
+/**  Main
+ * Creates int array, and calls isMember to find number in arrau.
+ *
+ * @param  none
+ * @return      none
+ */
+
+int main(){
+   int intArray [8] = { 25, 19, 88, 32, 91, 10, 37, 55 };
+   int searchValue = 0;
+   int nextIndex = 0;
+   const int arrayTotal = 8;
+   
+   cout << "What number would you like to search for?"<<endl;
+   cin >> searchValue;
+   isMember(intArray, searchValue, nextIndex, arrayTotal);
+   /**for (int i=0; i<9; i++)
+	   cout << intArray[i]<<endl;*/
+      
+      cout << " " << nextIndex << endl;
+   if (nextIndex == -1)
+      cout << "That number is not in the array."<<endl;
+   else if(intArray[nextIndex] == searchValue)
+      cout << "That number is in index at index value: " << nextIndex << endl;
+   
+      
+   return 0;
+}//end main
+
+
+
+/**  Main
+ * Collects input of words, then tallies the first letter.
+ *
+ * @param  intArray -> Array holding ints
+ * @param searchValue ->user input that the profram is searching fo
+ * @param nextIndex -> counter, increased to search the array
+ * @param arrayTotal -> constant; array length
+ * @return   nextIndex->used to determine if number was in the array
+ */
+
+int isMember(const int intArray[], int searchValue, int& nextIndex, const int arrayTotal){
+   if(nextIndex > arrayTotal) 
+      {nextIndex= -1;
+      return nextIndex;}
+   else if(searchValue == intArray[nextIndex]) return nextIndex;
+   else
+   {
+      nextIndex++;
+      isMember(intArray, searchValue, nextIndex, arrayTotal);
+      
+   }//end else
+
+}//end ismember
