@@ -1,0 +1,67 @@
+/** @author Haley
+*   @file lab2.2.cpp
+*/
+
+#include <iostream>
+#include <stdio.h>
+#include <string.h>
+#include <cstdlib>
+using namespace std;
+
+
+void reverseString(int i, const string sentence[], int& printCount);
+
+/**  Main
+ * Collects input of words, then calls reverseSentence to reverse them.
+ *
+ * @param  none
+ * @return      none
+ */
+
+int main()
+{
+   int i =0;
+   string sentence[200];
+   int printCount=0;
+   cout << "Enter words and I'll display them backwards. (Control Z will stop the program, and display the results)" << endl;
+   
+   
+   while (!cin.eof())
+   {
+      cin >>sentence[i];
+      i++;
+   }//end while
+   printCount=i;
+   
+   cout << "This was the sentence that you entered: ";
+   for (int count=0; count < i; count++)
+      cout << sentence[count] << " ";
+   
+   cout << endl;
+   
+   cout << "And here is the sentence backwards: ";   
+   reverseString(i, sentence, printCount);
+   return 0;
+   
+}
+
+
+
+
+/**  ReverseString
+ * Uses recursion to print the array backwards
+ *
+ * @param  i-> counter for numer of words in array
+ * @param  sentence[] -> array with stored sentence
+ * @param  printCount -> counter originally set to i, then decreased by 1 each time the recursive function operates.
+ * @return      none
+ */
+
+void reverseString(int i, const string sentence[], int& printCount){
+   if (printCount<0) return;
+   else {
+      cout << sentence[printCount] << " ";
+      printCount--;
+      reverseString(i, sentence, printCount);
+      }//end else
+}//end reverse string
